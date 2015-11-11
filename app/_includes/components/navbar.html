@@ -1,0 +1,65 @@
+<!-- Dropdown Structure -->
+{% for drops in site.data.mainmenu.navbar %}
+<ul id="{{drops.dropdown-name}}" class="dropdown-content">
+  {% for dropsin in site.data.mainmenu[drops.dropdown-name] %}
+  <li><a href="{{dropsin.link}}">
+    {% if site.data.mainmenu.submenuIcon ==  true %}
+    <i class="material-icons left {{site.data.mainmenu.iconcolor}}">{{dropsin.icon}}</i>
+    {% endif %}
+    {{dropsin.title}}
+  </a></li>
+  {% endfor %}
+</ul>
+{% endfor %}
+
+<nav class="z-depth-0 transparent">
+  <div class="container">
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo {{site.data.mainmenu.logoposition}} {{site.data.mainmenu.textcolor}}">Logo</a>
+    <ul class="{{site.data.mainmenu.position}} hide-on-med-and-down">
+      {% for menu in site.data.mainmenu.navbar %}
+        <li><a 
+          href="{{menu.link}}" 
+          class="{% if menu.dropdown == 'true' %}dropdown-button {% endif %}{{site.data.mainmenu.textcolor}}" 
+          data-activates="{% if menu.dropdown == 'true' %}{{menu.dropdown-name}}{% endif %}">
+          {% if site.data.mainmenu.menuIcon == true %}
+          <i class="material-icons left {{site.data.mainmenu.iconcolor}}">{{menu.icon}}</i>
+          {% endif %}
+          {{menu.title}}
+          <i class="material-icons right">{% if menu.dropdown == 'true' %}arrow_drop_down{% endif %}</i>
+        </a></li>
+      {% endfor %}
+    </ul>
+
+    <ul id="slide-out" class="side-nav">
+      {% for menu in site.data.mainmenu.navbar %}
+      {% if menu.dropdown == 'true' %} {% else %}
+        <li><a href="{{menu.link}}" class="{{site.data.mainmenu.textcolor}} waves-effect waves-purple">{{menu.title}}</a></li>
+      {% endif %}
+      {% endfor %}
+
+      {% for drops in site.data.mainmenu.navbar %}
+      {% if drops.dropdown-name == '' %}  {% else %}
+      <li class="no-padding">
+      <ul class="collapsible collapsible-accordion">
+        <li>
+          <a class="collapsible-header {{site.data.mainmenu.textcolor}} waves-effect waves-purple">
+          {{drops.dropdown-name | remove: 'dropdown-' | capitalize }}
+          <i class="mdi-navigation-arrow-drop-down right"></i></a>
+          <div class="collapsible-body">
+            <ul>
+              {% for dropsin in site.data.mainmenu[drops.dropdown-name] %}
+              <li><a href="{{dropsin.link}}" class="{{site.data.mainmenu.textcolor}} waves-effect waves-purple">{{dropsin.title}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+      </ul>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+      <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu {{site.data.mainmenu.textcolor}}"></i></a>
+  </div>
+  </div>  
+</nav>

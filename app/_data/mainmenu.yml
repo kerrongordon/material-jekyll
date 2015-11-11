@@ -1,0 +1,68 @@
+
+logoposition: 
+textcolor: grey-text
+position: right
+iconcolor: red-text
+menuIcon: true
+submenuIcon: true
+
+navbar:
+- {title: 'home',
+  link: 'home',
+  icon: 'home',
+  dropdown: 'false',
+  dropdown-name: ''}
+
+- {title: 'blog',
+  link: 'blog',
+  icon: 'toc',
+  dropdown: 'false',
+  dropdown-name: ''}
+
+- {title: 'about',
+  link: 'about',
+  icon: 'supervisor_account',
+  dropdown: 'true',
+  dropdown-name: 'dropdown-about'}
+
+- {title: 'contact',
+  link: 'contact',
+  icon: 'description',
+  dropdown: 'true',
+  dropdown-name: 'dropdown-contact'}
+
+
+dropdown-about:
+- {title: 'subabout',
+  link: 'home',
+  icon: 'home'}
+
+- {title: 'subabout',
+  link: 'blog',
+  icon: 'toc'}
+
+- {title: 'subabout',
+  link: 'about',
+  icon: 'supervisor_account'}
+
+- {title: 'subabout',
+  link: 'contact',
+  icon: 'description'}
+
+
+dropdown-contact:
+- {title: 'subcontact',
+  link: 'home',
+  icon: 'home'}
+
+- {title: 'subcontact',
+  link: 'blog',
+  icon: 'toc'}
+
+- {title: 'subcontact',
+  link: 'about',
+  icon: 'supervisor_account'}
+
+- {title: 'subcontact',
+  link: 'contact',
+  icon: 'description'}
